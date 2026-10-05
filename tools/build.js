@@ -17,7 +17,7 @@ const URLS = require("../js/urls.js");
 
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "_site");
-const SITE = "https://brothersinteractive.in";
+const SITE = "https://brothersinteractive.com";
 // Never published: tooling, local notes, and the build output itself
 const SKIP = new Set([".git", ".github", "_site", "tools", "node_modules", "HANDOFF.md", "DEPLOY.md", ".gitignore"]);
 

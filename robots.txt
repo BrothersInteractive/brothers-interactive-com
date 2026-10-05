@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /.claude/
 
-Sitemap: https://brothersinteractive.in/sitemap.xml
+Sitemap: https://brothersinteractive.com/sitemap.xml

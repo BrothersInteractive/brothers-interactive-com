@@ -1,7 +1,7 @@
 backend:
   name: github
-  # The company GitHub account (created 1 Oct 2026) and its website repo.
-  repo: BrothersInteractive/brothers-interactive
+  # The company GitHub account (created 1 Oct 2026) and the .com website repo (copied from the .in repo on 5 Oct 2026).
+  repo: BrothersInteractive/brothers-interactive-com
   branch: main
   # The admin runs on Sveltia CMS (admin/index.html), which reads this Decap-format file.
   # Login = "Sign In with Token": a GitHub personal access token with Contents read/write on
@@ -237,7 +237,7 @@ collections:
             summary: "{{fields.label}}"
             fields:
               - { label: "Name", name: "label", widget: "string", hint: "Shown on the tile and on every piece in this category, e.g. Realistic Vehicles." }
-              - { label: "Web address name", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only, e.g. realistic-vehicles"], hint: "Used in the link: brothersinteractive.in/category/<this>/. Lowercase, no spaces. Don't change it once the category is live, or links already shared stop working." }
+              - { label: "Web address name", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only, e.g. realistic-vehicles"], hint: "Used in the link: brothersinteractive.com/category/<this>/. Lowercase, no spaces. Don't change it once the category is live, or links already shared stop working." }
               - { label: "Tile picture (optional)", name: "tile", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories", hint: "The picture on the homepage tile (landscape about 4:3 fills best). Empty = the first piece in this category. The tile says Coming soon until the category has a piece." }
               - { label: "Internal code (leave as it is)", name: "key", widget: "string", required: false, hint: "Only the original categories have one; it links them to the pieces already uploaded. Leave empty for a new category." }
       - name: "projects"

@@ -14,7 +14,7 @@ The editor is **Sveltia CMS** (loaded by `admin/index.html`, configured by `admi
 
 ## Logging in
 
-1. Open https://brothersinteractive.in/admin/
+1. Open https://brothersinteractive.com/admin/
 2. Click **Sign In Using Access Token** and paste the admin key (a GitHub fine-grained
    personal access token, see below). The browser remembers it.
    Don't use "Sign In with GitHub": it needs a login helper this site doesn't have.
@@ -22,7 +22,7 @@ The editor is **Sveltia CMS** (loaded by `admin/index.html`, configured by `admi
 **Making a key** (new computer, lost key, or the old one was exposed):
 GitHub → profile picture → **Settings → Developer settings → Personal access tokens →
 Fine-grained tokens → Generate new token**. Name it `Website admin`, Expiration **No expiration**,
-Repository access **Only select repositories → brothers-interactive**, Permissions
+Repository access **Only select repositories → brothers-interactive-com**, Permissions
 **Contents: Read and write**. Copy it once, keep it private, and delete any old key you no longer use.
 
 ## Saving
@@ -40,7 +40,7 @@ JPG or WebP), optional Additional Images, Description, and optional Tags (for re
 Drag the piece to the top of the list to show it first, then **Save**.
 
 About two minutes later the piece has its own shareable address, e.g.
-`https://brothersinteractive.in/portfolio/realistic-character/lehri/` (category + title). Opening the
+`https://brothersinteractive.com/portfolio/realistic-character/lehri/` (category + title). Opening the
 piece on the site shows that address in the address bar.
 
 **3D views (optional):** paste a Sketchfab link, or upload a Marmoset `.mview` file (Toolbag: File >
