@@ -1,6 +1,6 @@
 {
   "eyebrow": "// About",
-  "titleStart": "Quality and",
+  "titleStart": "Quality and.",
   "titleAccent": "timeline",
   "titleEnd": ", always.",
   "paragraphs": [
@@ -20,14 +20,16 @@
         "Maya",
         "3ds Max",
         "ZBrush"
-      ]
+      ],
+      "box": "tools"
     },
     {
       "name": "Sculpting",
       "tools": [
         "ZBrush",
         "Blender"
-      ]
+      ],
+      "box": "tools"
     },
     {
       "name": "Cloth",
@@ -35,7 +37,8 @@
         "Marvelous Designer",
         "ZBrush",
         "Maya / Blender"
-      ]
+      ],
+      "box": "tools"
     },
     {
       "name": "Texturing",
@@ -43,7 +46,8 @@
         "Substance 3D Painter",
         "Substance 3D Designer",
         "Photoshop"
-      ]
+      ],
+      "box": "tools"
     },
     {
       "name": "Hair",
@@ -52,14 +56,16 @@
         "Blender",
         "ZBrush",
         "FiberShop"
-      ]
+      ],
+      "box": "tools"
     },
     {
       "name": "Game Engine",
       "tools": [
         "Unreal Engine",
         "Unity"
-      ]
+      ],
+      "box": "tools"
     },
     {
       "name": "Communication",
@@ -85,9 +91,9 @@
     }
   ],
   "toolsNote": "These are our main tools, and we're always open to learning and adopting new software.",
+  "workflowTitle": "How we work with your team",
   "statFoundedLabel": "Founded",
   "statGamesLabel": "Shipped games",
   "statProjectsLabel": "Published pieces",
-  "statYearsLabel": "Years in production",
-  "workflowTitle": "How we work with your team"
+  "statYearsLabel": "Years in production"
 }
