@@ -249,36 +249,6 @@ for (const b of BREAKDOWNS) {
   });
 }
 
-// ---- 6a. old brothersinteractive.com addresses ---------------------------------------------
-/* Until Oct 2026 brothersinteractive.com was an ArtStation Pro website. Its addresses (in Google and in
-   links people shared) get a small page that sends visitors to the same thing here. Piece ids in
-   data/pieces came from its /projects/<id> addresses; albums and pages were matched by hand (5 Oct 2026). */
-function writeRedirect(address, to) {
-  const url = SITE + to;
-  const dir = path.join(OUT, address);
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, "index.html"), '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8" />\n' +
-    '<title>Brothers Interactive</title>\n<meta name="robots" content="noindex" />\n<link rel="canonical" href="' + url + '" />\n' +
-    '<meta http-equiv="refresh" content="0; url=' + to + '" />\n<script>location.replace(' + JSON.stringify(to) + ' + location.hash);</script>\n' +
-    '</head><body><p>This page has moved: <a href="' + to + '">' + url + '</a></p></body></html>\n');
-}
-const OLD_ALBUMS = {
-  605137: "/portfolio/", 14601427: "realistic-character", 14601428: "realistic-creature", 15044198: "realistic-hair",
-  14601429: "stylized-character", 15073267: "stylized-creature", 15019467: "stylized-character" /* Hand-Paint */,
-  15019469: "stylized-character" /* Anime */, 15044192: "props", 15117469: "midnight-walk", 15044251: "lost-in-random"
-};
-const OLD_PAGES = { "/pages/about/": "/about/", "/pages/services/": "/services/", "/pages/projects/": "/games/",
-  "/pages/deck/": "/", "/resume/": "/about/", "/projects/": "/portfolio/", "/albums/": "/portfolio/" };
-const live = (to) => to === "/" || fs.existsSync(path.join(OUT, to, "index.html")) ? to : "/";   // a hidden section -> home
-let oldCount = 0;
-for (const p of ALL_PIECES) if (p.id) { writeRedirect("/projects/" + p.id + "/", PIECE_PATH[p.id] || "/portfolio/"); oldCount++; }
-for (const id in OLD_ALBUMS) {
-  const to = OLD_ALBUMS[id].charAt(0) === "/" ? OLD_ALBUMS[id] : URLS.categoryPath(OLD_ALBUMS[id]);
-  writeRedirect("/albums/" + id + "/", live(to)); oldCount++;
-}
-for (const from in OLD_PAGES) { writeRedirect(from, live(OLD_PAGES[from])); oldCount++; }
-console.log("Old .com addresses: " + oldCount + " redirect pages.");
-
 // ---- 6b. admin dropdowns ------------------------------------------------------------------
 /* The Portfolio form's Category, "Also show in" and Project dropdowns are filled from the Categories and
    Projects lists (and the Games list) every build, so something added there appears in the form about two
