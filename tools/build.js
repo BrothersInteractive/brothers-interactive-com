@@ -7,6 +7,7 @@
      /category/realistic-character/              one category
      /portfolio/realistic-character/lehri/       one artwork, with its own title + preview image
      /breakdowns/  /breakdowns/orc-fanart/       breakdowns
+     /games/wavetale/                            one game, its trailer open
 
    Run locally:  node tools/build.js   (then serve the _site folder)
    ===================================================================== */
@@ -174,6 +175,20 @@ function writePage(address, tpl, info, meta) {
 const HIDDEN = (URLS.TEXT_SECTIONS || []).filter((id) => (json("data/sections/" + id + ".json", {}) || {}).hidden);
 if (HIDDEN.length) console.log("Hidden sections: " + HIDDEN.join(", "));
 for (const id of URLS.SECTIONS) if (id !== "home" && HIDDEN.indexOf(id) === -1) writePage("/" + id + "/", "home", { section: id });
+
+// ---- 3b. games: /games/<name>/ opens the Games section with that game's trailer playing -------------
+// One shareable link per game for clients, with the game's own title and key art in link previews.
+if (HIDDEN.indexOf("games") === -1) {
+  const GAMES = (json("data/games.json", {}).items || []).filter((g) => g && g.t);
+  URLS.gamePaths(GAMES).forEach((p, i) => {
+    const g = GAMES[i];
+    writePage(p, "home", { section: "games", game: p.split("/")[2] }, {
+      title: g.t + " | Brothers Interactive",
+      description: "Brothers Interactive contributed character and asset production to " + g.t + (g.s ? " (" + g.s + ")" : "") + ". Watch the trailer.",
+      image: g.i
+    });
+  });
+}
 
 // ---- 4. categories: /category/<slug>/ opens the homepage at the Portfolio collage with that filter on ---------
 // Categories as edited in /admin (data/categories.json) replace the built-in list

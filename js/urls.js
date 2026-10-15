@@ -8,6 +8,7 @@
      /category/realistic-character/     one portfolio category
      /portfolio/realistic-character/lehri/   one artwork (shareable with clients)
      /breakdowns/  /breakdowns/orc-fanart/   breakdown list and one breakdown
+     /games/wavetale/                   the Games section with that game's trailer open
    ===================================================================== */
 (function (root) {
   "use strict";
@@ -73,12 +74,24 @@
     return out;
   }
 
+  /* Every game's address, in the same order as the list: /games/wavetale/ (shareable with clients; opening it
+     plays that trailer). Two games with the same name get "-2". */
+  function gamePaths(items) {
+    var used = {};
+    return (items || []).map(function (g) {
+      var name = slugify(g && g.t) || "game", key = name, n = 1;
+      while (used[key]) key = name + "-" + (++n);
+      used[key] = true;
+      return "/games/" + key + "/";
+    });
+  }
+
   function categoryPath(slug) { return "/category/" + slug + "/"; }
   function sectionPath(id) { return id === "home" ? "/" : "/" + id + "/"; }
   function breakdownPath(id) { return id ? "/breakdowns/" + slugify(id) + "/" : "/breakdowns/"; }
 
   var api = {
-    BROWSE_CATS: BROWSE_CATS, setCategories: setCategories, SECTIONS: SECTIONS, TEXT_SECTIONS: TEXT_SECTIONS, slugify: slugify, catSlug: catSlug, piecePaths: piecePaths,
+    BROWSE_CATS: BROWSE_CATS, setCategories: setCategories, SECTIONS: SECTIONS, TEXT_SECTIONS: TEXT_SECTIONS, slugify: slugify, catSlug: catSlug, piecePaths: piecePaths, gamePaths: gamePaths,
     categoryPath: categoryPath, sectionPath: sectionPath, breakdownPath: breakdownPath
   };
   if (typeof module === "object" && module.exports) module.exports = api; else root.BIURL = api;

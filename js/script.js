@@ -31,7 +31,7 @@ function siteMain() {
   // Category list and every page address live in js/urls.js (shared with the GitHub build step).
   var URLS = window.BIURL;
   var BROWSE_CATS = URLS.BROWSE_CATS;
-  // What the build step baked into this page: { section } / { cat } / { asset } / { bd } (empty on plain pages)
+  // What the build step baked into this page: { section } / { cat } / { asset } / { bd } / { section, game } (empty on plain pages)
   var PAGE_INFO = window.__BI_PAGE || {};
   // Show a clean address without reloading (old ?id= / ?cat= / #section links get tidied this way too)
   function setAddress(path) {
@@ -1313,9 +1313,10 @@ function siteMain() {
      Games grid + trailer modal
      ------------------------------------------------------------------ */
   var gamesGrid = $("#gamesGrid");
+  var GAME_PATHS = URLS.gamePaths(GAMES);   // /games/wavetale/ … one shareable address per game
   if (gamesGrid) gamesGrid.innerHTML = GAMES.map(function (g, i) {
     return (
-      '<article class="game-card reveal" data-yt="' + esc(ytId(g.yt)) + '" tabindex="0" role="button" aria-label="Play trailer: ' + esc(g.t) + '" style="transition-delay:' + (i % 3) * 90 + 'ms">' +
+      '<article class="game-card reveal" data-yt="' + esc(ytId(g.yt)) + '" data-game="' + i + '" tabindex="0" role="button" aria-label="Play trailer: ' + esc(g.t) + '" style="transition-delay:' + (i % 3) * 90 + 'ms">' +
         '<img ' + imgAttrs(g.i, "(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 25vw") + ' alt="' + esc(g.t) + ' key art" loading="lazy" />' +
         '<span class="game-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>' +
         '<div class="game-info"><div><span class="game-studio">' + esc(g.s || "") + '</span><span class="game-title">' + esc(g.t) + '</span></div><span class="game-tag">Watch trailer</span></div>' +
@@ -1334,22 +1335,41 @@ function siteMain() {
     vm.setAttribute("aria-hidden", "false");
     document.body.classList.add("no-scroll");
   }
+  // While a game's trailer is open, the address shows that game's own link (/games/wavetale/) so it can be
+  // copied and sent to a client; closing the trailer puts back the address from before.
+  var addressBeforeVideo = null, titleBeforeVideo = null;
+  function openGame(i) {
+    var g = GAMES[i];
+    if (!g) return;
+    openVideo(g.yt);
+    if (addressBeforeVideo === null) { addressBeforeVideo = location.pathname + location.search; titleBeforeVideo = document.title; }
+    setAddress(GAME_PATHS[i]);
+    document.title = g.t + " | Brothers Interactive";
+  }
   function closeVideo() {
     if (!vm) return;
     vm.classList.remove("open");
     vm.setAttribute("aria-hidden", "true");
     vmFrame.src = "";
     document.body.classList.remove("no-scroll");
+    if (addressBeforeVideo !== null) { setAddress(addressBeforeVideo); document.title = titleBeforeVideo; addressBeforeVideo = titleBeforeVideo = null; }
   }
   if (gamesGrid) {
     gamesGrid.addEventListener("click", function (e) {
       var card = e.target.closest(".game-card");
-      if (card) openVideo(card.dataset.yt);
+      if (card) openGame(+card.dataset.game);
     });
     gamesGrid.addEventListener("keydown", function (e) {
       var card = e.target.closest(".game-card");
-      if (card && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openVideo(card.dataset.yt); }
+      if (card && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openGame(+card.dataset.game); }
     });
+    // Arriving on a game's own link (made by the build step): open its trailer; closing it leaves /games/
+    var gameAtStart = PAGE_INFO.game ? GAME_PATHS.indexOf("/games/" + PAGE_INFO.game + "/") : -1;
+    if (gameAtStart !== -1) {
+      // the page's own title names the game (for link previews); after closing, /games/ gets the site's title
+      addressBeforeVideo = URLS.sectionPath("games"); titleBeforeVideo = "Brothers Interactive | 3D Characters for Games";
+      openGame(gameAtStart);
+    }
   }
   if (vm) {
     $("#videoClose").addEventListener("click", closeVideo);
@@ -1542,7 +1562,7 @@ function siteMain() {
     navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + current.id); });
     // The address follows the highlighted menu item (/ , /portfolio/, /team/ …) once the visitor is
     // moving around, never while an artwork is open in the viewer (that shows the artwork's own link).
-    if (addressFollowsScroll && addressBeforeLb === null && URLS.SECTIONS.indexOf(current.id) !== -1) setAddress(URLS.sectionPath(current.id));
+    if (addressFollowsScroll && addressBeforeLb === null && addressBeforeVideo === null && URLS.SECTIONS.indexOf(current.id) !== -1) setAddress(URLS.sectionPath(current.id));
   }
   // Not on first paint: a /team/ page must not flash "/" before it has scrolled down to Team.
   var addressFollowsScroll = false;
@@ -2482,7 +2502,7 @@ function siteMain() {
   var startId = PAGE_INFO.section || decodeURIComponent(location.hash.slice(1));
   if (startId && document.getElementById(startId)) {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    if (URLS.SECTIONS.indexOf(startId) !== -1 && !PAGE_INFO.cat) setAddress(URLS.sectionPath(startId));   // a category address stays as it is
+    if (URLS.SECTIONS.indexOf(startId) !== -1 && !PAGE_INFO.cat && !PAGE_INFO.game) setAddress(URLS.sectionPath(startId));   // a category address stays as it is
     else if (location.hash) setAddress(location.pathname + location.search);   // drop the "#…"
     goToSection(startId, false);
     var jobAtStart = sectionJob;
