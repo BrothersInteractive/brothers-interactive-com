@@ -639,6 +639,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   padding: 24px;
 }
 .lightbox.open, .video-modal.open { opacity: 1; pointer-events: auto; }
+/* Trailers: the site stays visible behind the video (Arun, 15 Oct 2026); the artwork viewer keeps its dark backdrop */
+.video-modal { background: rgba(3, 4, 9, 0.5); backdrop-filter: blur(2px); }
 .lightbox-figure { margin: 0; max-width: min(92vw, 1100px); max-height: 92vh; display: flex; flex-direction: column; align-items: center; gap: 14px; transform: scale(0.96); transition: transform 0.35s var(--ease); }
 .lightbox.open .lightbox-figure { transform: none; }
 .lightbox-figure img { width: min(88vw, 1000px); height: min(70vh, 700px); border-radius: var(--radius); object-fit: contain; transition: opacity 0.18s ease; }
