@@ -77,13 +77,13 @@
       <nav class="main-nav" id="mainNav" aria-label="Primary">
         <ul>
           <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#games" class="nav-link">Games</a></li>
-          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
           <li><a href="#breakdown" class="nav-link">Breakdown</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#team" class="nav-link">Team</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#games" class="nav-link">Games</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
           <li><a href="#careers" class="nav-link">Careers</a></li>
           <li><a href="/contact" class="nav-link nav-link--cta">Contact</a></li>
         </ul>
@@ -96,7 +96,6 @@
   <!--/NAV-->
 
   <main id="main">
-
     <!-- ================= HERO ================= -->
     <section class="hero" id="home">
       <div class="container hero-inner">
@@ -154,76 +153,6 @@
       </div>
     </section>
 
-    <!-- ================= GAMES ================= -->
-    <section class="section section--alt" id="games">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">// Games</p>
-          <h2 class="section-title">So far, we have contributed <span class="accent">in these games.</span></h2>
-          <p class="section-sub">Character, creature, prop and weapon work delivered for studios worldwide.</p>
-        </div>
-        <div class="games-grid" id="gamesGrid">
-          <!-- Rendered by script.js -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= TESTIMONIALS ================= -->
-    <section class="section" id="testimonials">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">// Testimonials</p>
-          <h2 class="section-title">What studios say about <span class="accent">working with us</span></h2>
-          <p class="section-sub">Art directors and producers on the assets we delivered, the communication along the way, and whether they came back.</p>
-        </div>
-        <div class="testimonial-marquee" id="testimonialGrid"><!-- Rendered from TESTIMONIALS in data.js --></div>
-      </div>
-    </section>
-
-    <!-- ================= ABOUT ================= -->
-    <section class="section section--alt" id="about">
-      <div class="container about-grid">
-        <div class="about-copy reveal">
-          <p class="eyebrow">// About</p>
-          <h2 class="section-title" id="aboutTitle">Quality and <span class="accent">timeline</span>, always.</h2>
-          <div class="about-text" id="aboutText">
-            <p>
-            Brothers Interactive is a team of 3D artists passionate about bringing game characters to life. Since 2019
-            we've worked as an extension of studios' own art teams, from small indie projects to large AAA productions.
-          </p>
-          <p>
-            We know outsourcing art should make production easier, not riskier. So we take characters, creatures and
-            props from the first sculpt to a polished, engine-ready asset, matching your art direction so closely that
-            our work sits naturally beside your in-house art.
-          </p>
-          <p>
-            Realistic or stylized, hero character or background prop, every piece gets the same attention to detail,
-            clear communication at every stage and delivery on the date we agree, because we believe quality and
-            timeline should always go together.
-          </p>
-          </div>
-          <div class="hero-actions">
-            <a href="mailto:business@brothersinteractive.com" class="btn btn--primary" id="aboutPrimaryBtn">Business Inquiry</a>
-            <a href="#team" class="btn btn--ghost" id="aboutSecondaryBtn">Meet the team</a>
-          </div>
-        </div>
-
-        <div class="about-panel reveal">
-          <div class="pipeline">
-            <h3 class="pipeline-title">Tools we work in</h3>
-            <dl class="tool-groups" id="aboutTools">
-              <div class="tool-group"><dt>Modeling</dt><dd><ul class="client-list tools-list"><li>Blender</li><li>Maya</li><li>3ds Max</li></ul></dd></div>
-              <div class="tool-group"><dt>Sculpting</dt><dd><ul class="client-list tools-list"><li>ZBrush</li><li>Blender</li></ul></dd></div>
-              <div class="tool-group"><dt>Texturing</dt><dd><ul class="client-list tools-list"><li>Substance 3D Painter</li><li>Photoshop</li></ul></dd></div>
-              <div class="tool-group"><dt>Game Engine</dt><dd><ul class="client-list tools-list"><li>Unreal Engine</li><li>Unity</li></ul></dd></div>
-            </dl>
-            <p class="tools-note">These are our main tools, and we're always open to learning and adopting new software.</p>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
     <!-- ================= PORTFOLIO ================= -->
     <section class="section" id="portfolio">
       <div class="container">
@@ -279,7 +208,63 @@
       </div>
     </section>
 
+    <!-- ================= ABOUT ================= -->
+    <section class="section section--alt" id="about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <p class="eyebrow">// About</p>
+          <h2 class="section-title" id="aboutTitle">Quality and <span class="accent">timeline</span>, always.</h2>
+          <div class="about-text" id="aboutText">
+            <p>
+            Brothers Interactive is a team of 3D artists passionate about bringing game characters to life. Since 2019
+            we've worked as an extension of studios' own art teams, from small indie projects to large AAA productions.
+          </p>
+          <p>
+            We know outsourcing art should make production easier, not riskier. So we take characters, creatures and
+            props from the first sculpt to a polished, engine-ready asset, matching your art direction so closely that
+            our work sits naturally beside your in-house art.
+          </p>
+          <p>
+            Realistic or stylized, hero character or background prop, every piece gets the same attention to detail,
+            clear communication at every stage and delivery on the date we agree, because we believe quality and
+            timeline should always go together.
+          </p>
+          </div>
+          <div class="hero-actions">
+            <a href="mailto:business@brothersinteractive.com" class="btn btn--primary" id="aboutPrimaryBtn">Business Inquiry</a>
+            <a href="#team" class="btn btn--ghost" id="aboutSecondaryBtn">Meet the team</a>
+          </div>
+        </div>
 
+        <div class="about-panel reveal">
+          <div class="pipeline">
+            <h3 class="pipeline-title">Tools we work in</h3>
+            <dl class="tool-groups" id="aboutTools">
+              <div class="tool-group"><dt>Modeling</dt><dd><ul class="client-list tools-list"><li>Blender</li><li>Maya</li><li>3ds Max</li></ul></dd></div>
+              <div class="tool-group"><dt>Sculpting</dt><dd><ul class="client-list tools-list"><li>ZBrush</li><li>Blender</li></ul></dd></div>
+              <div class="tool-group"><dt>Texturing</dt><dd><ul class="client-list tools-list"><li>Substance 3D Painter</li><li>Photoshop</li></ul></dd></div>
+              <div class="tool-group"><dt>Game Engine</dt><dd><ul class="client-list tools-list"><li>Unreal Engine</li><li>Unity</li></ul></dd></div>
+            </dl>
+            <p class="tools-note">These are our main tools, and we're always open to learning and adopting new software.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TEAM: LEADERSHIP ================= -->
+    <section class="section section--alt" id="team">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">// Leadership</p>
+          <h2 class="section-title">Who runs <span class="accent">the studio</span></h2>
+          <p class="section-sub">A founder-led studio. The leadership team still reviews art, talks to clients directly and sits with the artists every day.</p>
+        </div>
+
+        <!-- Rendered from data/team.json by script.js — edit via /admin or that file, not here. -->
+        <div class="team-grid" id="teamGrid"></div>
+      </div>
+    </section>
 
     <!-- ================= SERVICES ================= -->
     <section class="section" id="services">
@@ -460,24 +445,36 @@
       </div>
     </section>
 
-    <!-- ================= TEAM: LEADERSHIP ================= -->
-    <section class="section" id="team">
+    <!-- ================= GAMES ================= -->
+    <section class="section" id="games">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">// Leadership</p>
-          <h2 class="section-title">Who runs <span class="accent">the studio</span></h2>
-          <p class="section-sub">A founder-led studio. The leadership team still reviews art, talks to clients directly and sits with the artists every day.</p>
+          <p class="eyebrow">// Games</p>
+          <h2 class="section-title">So far, we have contributed <span class="accent">in these games.</span></h2>
+          <p class="section-sub">Character, creature, prop and weapon work delivered for studios worldwide.</p>
         </div>
+        <div class="games-grid" id="gamesGrid">
+          <!-- Rendered by script.js -->
+        </div>
+      </div>
+    </section>
 
-        <!-- Rendered from data/team.json by script.js — edit via /admin or that file, not here. -->
-        <div class="team-grid" id="teamGrid"></div>
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="section section--alt" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">// Testimonials</p>
+          <h2 class="section-title">What studios say about <span class="accent">working with us</span></h2>
+          <p class="section-sub">Art directors and producers on the assets we delivered, the communication along the way, and whether they came back.</p>
+        </div>
+        <div class="testimonial-marquee" id="testimonialGrid"><!-- Rendered from TESTIMONIALS in data.js --></div>
       </div>
     </section>
 
     <!-- ================= CAREERS / JOIN THE TEAM ================= -->
     <!-- Apply now opens the Google Form set in /admin > Settings > "Careers application form (Google Form link)".
          Images come from data/careers-hero.json (/admin > Careers Page Images). -->
-    <section class="section careers-join" id="careers">
+    <section class="section section--alt careers-join" id="careers">
       <div class="container page-hero-inner">
         <div class="reveal">
           <p class="eyebrow"><span class="eyebrow-dot"></span> Careers</p>
@@ -516,7 +513,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
 

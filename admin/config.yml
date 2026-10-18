@@ -103,112 +103,6 @@ collections:
               - { label: "Name", name: "n", widget: "string" }
               - { label: "Logo", name: "logo", widget: "image", required: false, media_folder: "/assets/img/logos", public_folder: "/assets/img/logos", hint: "Optional — only add this once you have permission to use the logo. Leave empty to show the name as text." }
 
-  - name: "games"
-    label: "Games"
-    description: "The Games section."
-    files:
-      - name: "text-games"
-        label: "Section heading and text"
-        file: "data/sections/games.json"
-        format: "json"
-        description: "The heading and subtitle above the games."
-        fields:
-          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
-          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
-          - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
-          - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
-      - name: "games"
-        label: "Games"
-        file: "data/games.json"
-        format: "json"
-        description: "The games shown in the Games section of the homepage — key art, studio, and trailer."
-        fields:
-          - label: "Games"
-            name: "items"
-            widget: "list"
-            collapsed: true
-            label_singular: "Game"
-            summary: "{{fields.t}}"
-            fields:
-              - { label: "Title", name: "t", widget: "string" }
-              - { label: "Studio", name: "s", widget: "string", required: false }
-              - { label: "YouTube video ID", name: "yt", widget: "string", hint: "Pasting the full video URL also works now — but ideally just the ID, e.g. from https://www.youtube.com/watch?v=JAqvK1peFrA that's JAqvK1peFrA" }
-              - { label: "Key Art Image", name: "i", widget: "image", media_folder: "/assets/img/games", public_folder: "/assets/img/games" }
-
-  - name: "testimonials"
-    label: "Testimonials"
-    description: "The Testimonials section: heading, the number boxes, and the client quotes."
-    files:
-      - name: "text-testimonials"
-        label: "Section heading and text"
-        file: "data/sections/testimonials.json"
-        format: "json"
-        description: "The heading and subtitle above the client quotes."
-        fields:
-          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
-          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
-          - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
-          - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
-      - name: "reviews"
-        label: "Client quotes"
-        file: "data/testimonials.json"
-        format: "json"
-        description: "Client testimonials shown on the homepage. Uncheck \"Sample / placeholder\" once you replace a sample with a real, approved quote."
-        fields:
-          - label: "Reviews"
-            name: "items"
-            widget: "list"
-            collapsed: true
-            label_singular: "Review"
-            summary: "{{fields.n}} — {{fields.r}}"
-            fields:
-              - { label: "Quote", name: "q", widget: "text" }
-              - { label: "Name", name: "n", widget: "string", hint: "Use \"Client name\" if they'd rather stay anonymous." }
-              - { label: "Role / Studio", name: "r", widget: "string" }
-              - { label: "Project", name: "project", widget: "string", required: false, hint: "What kind of work this review refers to, e.g. \"Realistic characters\"." }
-              - { label: "Photo", name: "img", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "/assets/img/team" }
-              - { label: "Sample / placeholder", name: "sample", widget: "boolean", default: false, hint: "On = shows a \"Sample\" badge. Turn off once this is a real, approved quote." }
-
-  - name: "about"
-    label: "About"
-    description: "The About section."
-    files:
-      - name: "about"
-        label: "About section"
-        file: "data/about.json"
-        format: "json"
-        description: "The homepage About section: heading, text, the two buttons, the four stat labels and the tools list. The Titles shipped and Published pieces numbers count your Games and Portfolio automatically."
-        fields:
-          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false, hint: "e.g. \"// About\"" }
-          - { label: "Heading — start", name: "titleStart", widget: "string", hint: "e.g. \"Quality and\"" }
-          - { label: "Heading — coloured word", name: "titleAccent", widget: "string", required: false, hint: "e.g. \"timeline\"" }
-          - { label: "Heading — end", name: "titleEnd", widget: "string", required: false, hint: "e.g. \", always.\" (start with a comma or a space)" }
-          - { label: "Paragraphs", name: "paragraphs", widget: "list", collapsed: true, label_singular: "Paragraph", field: { label: "Paragraph", name: "paragraph", widget: "text" }, hint: "Each item is one paragraph. Drag to reorder." }
-          - { label: "Main button label", name: "primaryBtnLabel", widget: "string", hint: "Opens an email to your business address." }
-          - { label: "Second button label", name: "secondaryBtnLabel", widget: "string", hint: "Scrolls to the Team section." }
-          - { label: "Founded (year)", name: "foundedYear", widget: "number", value_type: "int", hint: "The year the studio started. Years in production are counted from it." }
-          - { label: "Tools heading", name: "toolsTitle", widget: "string" }
-          - label: "Tool groups"
-            name: "toolGroups"
-            widget: "list"
-            collapsed: true
-            label_singular: "Tool group"
-            summary: "{{fields.name}}"
-            fields:
-              - { label: "Group name", name: "name", widget: "string", hint: "e.g. \"Sculpting\"" }
-              - { label: "Tools", name: "tools", widget: "list", hint: "One tool per item, e.g. ZBrush." }
-              - label: "Box"
-                name: "box"
-                widget: "select"
-                required: false
-                default: "tools"
-                hint: "Which box this group appears in on the website."
-                options:
-                  - { label: "Tools box (software we use)", value: "tools" }
-                  - { label: "Second box (how we work with you: communication, pipeline)", value: "workflow" }
-          - { label: "Note under the tools", name: "toolsNote", widget: "text", required: false }
-          - { label: "Second box heading", name: "workflowTitle", widget: "string", required: false, hint: "Heading of the box for groups set to Second box, e.g. How we work with your team." }
-
   - name: "portfolio"
     label: "Portfolio"
     description: "The Portfolio section's heading, the categories (the filter buttons) and the Project choices. The pieces themselves are in Portfolio pieces, just below."
@@ -524,6 +418,90 @@ collections:
                   - { label: "Step title", name: "t", widget: "string" }
                   - { label: "Description", name: "d", widget: "string" }
 
+  - name: "about"
+    label: "About"
+    description: "The About section."
+    files:
+      - name: "about"
+        label: "About section"
+        file: "data/about.json"
+        format: "json"
+        description: "The homepage About section: heading, text, the two buttons, the four stat labels and the tools list. The Titles shipped and Published pieces numbers count your Games and Portfolio automatically."
+        fields:
+          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false, hint: "e.g. \"// About\"" }
+          - { label: "Heading — start", name: "titleStart", widget: "string", hint: "e.g. \"Quality and\"" }
+          - { label: "Heading — coloured word", name: "titleAccent", widget: "string", required: false, hint: "e.g. \"timeline\"" }
+          - { label: "Heading — end", name: "titleEnd", widget: "string", required: false, hint: "e.g. \", always.\" (start with a comma or a space)" }
+          - { label: "Paragraphs", name: "paragraphs", widget: "list", collapsed: true, label_singular: "Paragraph", field: { label: "Paragraph", name: "paragraph", widget: "text" }, hint: "Each item is one paragraph. Drag to reorder." }
+          - { label: "Main button label", name: "primaryBtnLabel", widget: "string", hint: "Opens an email to your business address." }
+          - { label: "Second button label", name: "secondaryBtnLabel", widget: "string", hint: "Scrolls to the Team section." }
+          - { label: "Founded (year)", name: "foundedYear", widget: "number", value_type: "int", hint: "The year the studio started. Years in production are counted from it." }
+          - { label: "Tools heading", name: "toolsTitle", widget: "string" }
+          - label: "Tool groups"
+            name: "toolGroups"
+            widget: "list"
+            collapsed: true
+            label_singular: "Tool group"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Group name", name: "name", widget: "string", hint: "e.g. \"Sculpting\"" }
+              - { label: "Tools", name: "tools", widget: "list", hint: "One tool per item, e.g. ZBrush." }
+              - label: "Box"
+                name: "box"
+                widget: "select"
+                required: false
+                default: "tools"
+                hint: "Which box this group appears in on the website."
+                options:
+                  - { label: "Tools box (software we use)", value: "tools" }
+                  - { label: "Second box (how we work with you: communication, pipeline)", value: "workflow" }
+          - { label: "Note under the tools", name: "toolsNote", widget: "text", required: false }
+          - { label: "Second box heading", name: "workflowTitle", widget: "string", required: false, hint: "Heading of the box for groups set to Second box, e.g. How we work with your team." }
+
+  - name: "team"
+    label: "Team"
+    description: "The Team section."
+    files:
+      - name: "text-team"
+        label: "Section heading and text"
+        file: "data/sections/team.json"
+        format: "json"
+        description: "The heading and subtitle above the team."
+        fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
+          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+          - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+          - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+      - name: "members"
+        label: "Team members"
+        file: "data/team.json"
+        format: "json"
+        description: "The people shown on the Team page."
+        fields:
+          - label: "Team Members"
+            name: "items"
+            widget: "list"
+            collapsed: true
+            label_singular: "Person"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Initials", name: "initials", widget: "string", hint: "Shown if there's no photo, e.g. \"TN\"." }
+              - { label: "Photo", name: "photo", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "/assets/img/team", hint: "Optional — leave empty to show the initials instead." }
+              - { label: "Bio", name: "bio", widget: "text" }
+              - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Short skill/focus tags, one per line." }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                collapsed: true
+                required: false
+                label_singular: "Link"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string", hint: "e.g. \"LinkedIn\" or \"Email\"" }
+                  - { label: "URL", name: "url", widget: "string", hint: "Include https:// (e.g. https://www.linkedin.com/...). For email use mailto:name@example.com" }
+
   - name: "services"
     label: "Services"
     description: "The Services section, the FAQ under it, and the \"Let's create your game together\" band."
@@ -587,49 +565,71 @@ collections:
               - { label: "Text", name: "text", widget: "string" }
               - { label: "Button label", name: "button", widget: "string", hint: "The button opens the Contact page." }
 
-  - name: "team"
-    label: "Team"
-    description: "The Team section."
+  - name: "games"
+    label: "Games"
+    description: "The Games section."
     files:
-      - name: "text-team"
+      - name: "text-games"
         label: "Section heading and text"
-        file: "data/sections/team.json"
+        file: "data/sections/games.json"
         format: "json"
-        description: "The heading and subtitle above the team."
+        description: "The heading and subtitle above the games."
         fields:
           - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
-      - name: "members"
-        label: "Team members"
-        file: "data/team.json"
+      - name: "games"
+        label: "Games"
+        file: "data/games.json"
         format: "json"
-        description: "The people shown on the Team page."
+        description: "The games shown in the Games section of the homepage — key art, studio, and trailer."
         fields:
-          - label: "Team Members"
+          - label: "Games"
             name: "items"
             widget: "list"
             collapsed: true
-            label_singular: "Person"
-            summary: "{{fields.name}} — {{fields.role}}"
+            label_singular: "Game"
+            summary: "{{fields.t}}"
             fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Role", name: "role", widget: "string" }
-              - { label: "Initials", name: "initials", widget: "string", hint: "Shown if there's no photo, e.g. \"TN\"." }
-              - { label: "Photo", name: "photo", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "/assets/img/team", hint: "Optional — leave empty to show the initials instead." }
-              - { label: "Bio", name: "bio", widget: "text" }
-              - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Short skill/focus tags, one per line." }
-              - label: "Links"
-                name: "links"
-                widget: "list"
-                collapsed: true
-                required: false
-                label_singular: "Link"
-                summary: "{{fields.label}}"
-                fields:
-                  - { label: "Label", name: "label", widget: "string", hint: "e.g. \"LinkedIn\" or \"Email\"" }
-                  - { label: "URL", name: "url", widget: "string", hint: "Include https:// (e.g. https://www.linkedin.com/...). For email use mailto:name@example.com" }
+              - { label: "Title", name: "t", widget: "string" }
+              - { label: "Studio", name: "s", widget: "string", required: false }
+              - { label: "YouTube video ID", name: "yt", widget: "string", hint: "Pasting the full video URL also works now — but ideally just the ID, e.g. from https://www.youtube.com/watch?v=JAqvK1peFrA that's JAqvK1peFrA" }
+              - { label: "Key Art Image", name: "i", widget: "image", media_folder: "/assets/img/games", public_folder: "/assets/img/games" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    description: "The Testimonials section: heading, the number boxes, and the client quotes."
+    files:
+      - name: "text-testimonials"
+        label: "Section heading and text"
+        file: "data/sections/testimonials.json"
+        format: "json"
+        description: "The heading and subtitle above the client quotes."
+        fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
+          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+          - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+          - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+      - name: "reviews"
+        label: "Client quotes"
+        file: "data/testimonials.json"
+        format: "json"
+        description: "Client testimonials shown on the homepage. Uncheck \"Sample / placeholder\" once you replace a sample with a real, approved quote."
+        fields:
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            collapsed: true
+            label_singular: "Review"
+            summary: "{{fields.n}} — {{fields.r}}"
+            fields:
+              - { label: "Quote", name: "q", widget: "text" }
+              - { label: "Name", name: "n", widget: "string", hint: "Use \"Client name\" if they'd rather stay anonymous." }
+              - { label: "Role / Studio", name: "r", widget: "string" }
+              - { label: "Project", name: "project", widget: "string", required: false, hint: "What kind of work this review refers to, e.g. \"Realistic characters\"." }
+              - { label: "Photo", name: "img", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "/assets/img/team" }
+              - { label: "Sample / placeholder", name: "sample", widget: "boolean", default: false, hint: "On = shows a \"Sample\" badge. Turn off once this is a real, approved quote." }
 
   - name: "careers"
     label: "Careers"
