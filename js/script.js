@@ -86,8 +86,10 @@ function siteMain() {
   var lensEl = null, lensImg = null;
   // Lens size picked with the two lens buttons in the viewer: "small" = up to 512px, "big" = up to 750px
   // (both never wider than the picture's shorter side). Remembered per visitor.
-  var lensMode = "small";   // "small", "big" or "off" (the crossed-out lens button: no lens)
-  try { var savedLens = localStorage.getItem("bi-lens"); if (savedLens === "big" || savedLens === "off") lensMode = savedLens; } catch (e) {}
+  // Starts with no lens (Arun, 4 Nov 2026); a visitor who turns one on keeps it. The choice is kept under a new
+  // name ("bi-lens2") so everyone starts from "off" once, whatever they picked under the old default.
+  var lensMode = "off";   // "small", "big" or "off" (the crossed-out lens button: no lens)
+  try { var savedLens = localStorage.getItem("bi-lens2"); if (savedLens === "small" || savedLens === "big" || savedLens === "off") lensMode = savedLens; } catch (e) {}
   /* Zoom inside the lens, picked with the three zoom buttons (top to bottom): "native" = actual pixels, the
      uploaded file at its true 1:1 size, so the lens shows all the real detail there is and is never stretched,
      at least 1.5x so it still magnifies on smaller files; "2" = 2X and "3" = 3X the picture as shown on
@@ -213,7 +215,7 @@ function siteMain() {
   }
   document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest(".lb-lens-btn"); if (!b) return;
-    if (b.dataset.lens) { lensMode = b.dataset.lens; try { localStorage.setItem("bi-lens", lensMode); } catch (err) {} if (lensMode === "off") hideLens(); }
+    if (b.dataset.lens) { lensMode = b.dataset.lens; try { localStorage.setItem("bi-lens2", lensMode); } catch (err) {} if (lensMode === "off") hideLens(); }
     else if (b.dataset.zoom) { lensZoom = b.dataset.zoom; }
     showLensMode();
   });
